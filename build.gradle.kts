@@ -21,6 +21,7 @@ dependencies {
     //    // With compose.desktop.common you will also lose @Preview functionality
     implementation(compose.desktop.currentOs)
     implementation("org.jetbrains.compose.material3:material3-desktop:1.4.3")
+    implementation("org.junit.jupiter:junit-jupiter:5.8.1")
 }
 
 compose.desktop {
@@ -32,5 +33,12 @@ compose.desktop {
             packageName = "custom-structures"
             packageVersion = "1.0.0"
         }
+    }
+}
+
+//This Test entry is required so that JUnit can find the tests
+tasks {
+    withType<Test> {
+        useJUnitPlatform()
     }
 }

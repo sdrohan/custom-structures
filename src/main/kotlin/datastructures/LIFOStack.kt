@@ -1,10 +1,13 @@
 package datastructures
 
 import interfaces.Stack
+import java.util.concurrent.CopyOnWriteArrayList
 
 class LIFOStack<T> : Stack<T> {
 
-    private val stack = arrayListOf<T>()
+    //private val stack = arrayListOf<T>()
+    //Required to fix concurrency issues picked up in the tests
+    private val stack = CopyOnWriteArrayList<T>()
 
     override fun push(element: T) {
         stack.add(element)

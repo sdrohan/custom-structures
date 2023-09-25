@@ -16,13 +16,13 @@ class FIFOStack<T> : Stack<T> {
     override fun pop(): T? = if (isEmpty()) null else stack.removeAt(0)
 
     override fun popAll(): List<T> {
-        synchronized(stack) {
+       // synchronized(stack) {
             val tempStack = arrayListOf<T>()
             for (item in stack) {
                 pop()?.let { tempStack.add(it) }
             }
             return tempStack
-        }
+        //}
     }
 
     override fun peek(): T? = stack.firstOrNull()

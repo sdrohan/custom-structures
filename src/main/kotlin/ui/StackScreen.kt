@@ -52,7 +52,7 @@ fun StackContent(stack: Stack<*>, cardTitle: String) {
         elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
     ) {
         Row (modifier = Modifier.fillMaxWidth().padding(8.dp)) {
-            Text(text = "LIFO Stack", style = MaterialTheme.typography.bodyLarge)
+            Text(text = cardTitle, style = MaterialTheme.typography.bodyLarge)
         }
         Spacer(modifier = Modifier.height(16.dp))
         Row (modifier = Modifier.fillMaxWidth().padding(8.dp)){
