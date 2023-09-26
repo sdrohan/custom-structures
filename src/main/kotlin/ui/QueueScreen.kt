@@ -34,10 +34,18 @@ fun QueueScreen(queue: CustomQueue<String>) {
         )
 
         Button(onClick = {
-            enqueueElement(queue, inputText)
+            if (inputText.isNotBlank()) queue.enqueue(inputText)
             inputText = ""
         }) {
             Text("Enqueue")
+        }
+
+        Button(onClick = { queue.dequeue() }) {
+            Text("Dequeue")
+        }
+
+        Button(onClick = { while (!queue.isEmpty()) queue.dequeue() }) {
+            Text("Clear")
         }
 
         Text("Queue Size: ${queue.size()}")
@@ -50,12 +58,5 @@ fun QueueScreen(queue: CustomQueue<String>) {
             queue.peek(i)?.let { Text(it) }
         }
 
-    }
-}
-
-private fun enqueueElement(queue: Queue<String>, element: String) {
-    if (element.isNotBlank()) {
-        queue.enqueue(element)
-        println(element)
     }
 }

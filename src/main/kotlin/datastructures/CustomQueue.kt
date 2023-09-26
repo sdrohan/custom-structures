@@ -1,10 +1,12 @@
 package datastructures
 
+import androidx.compose.runtime.mutableStateListOf
 import interfaces.Queue
 
 class CustomQueue<T> : Queue<T> {
 
-    private val queue = arrayListOf<T>()
+    //private val queue = arrayListOf<T>()
+    private val queue = mutableStateListOf<T>()
 
     override fun enqueue(element: T) = queue.add(element)
     override fun dequeue() = queue.removeFirstOrNull()
