@@ -34,19 +34,24 @@ fun QueueScreen(queue: CustomQueue<String>) {
             modifier = Modifier.fillMaxWidth()
         )
 
-        Button(onClick = {
-            if (inputText.isNotBlank()) queue.enqueue(inputText)
-            inputText = ""
-        }) {
-            Text("Enqueue")
-        }
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            Button(onClick = {
+                if (inputText.isNotBlank()) queue.enqueue(inputText)
+                inputText = ""
+            }) {
+                Text("Enqueue")
+            }
 
-        Button(onClick = { queue.dequeue() }) {
-            Text("Dequeue")
-        }
+            Button(onClick = { queue.dequeue() }) {
+                Text("Dequeue")
+            }
 
-        Button(onClick = { while (!queue.isEmpty()) queue.dequeue() }) {
-            Text("Clear")
+            Button(onClick = { while (!queue.isEmpty()) queue.dequeue() }) {
+                Text("Clear")
+            }
         }
 
         Text("Queue Size: ${queue.size()}")
