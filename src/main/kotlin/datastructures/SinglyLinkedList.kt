@@ -2,7 +2,7 @@ package datastructures
 
 import interfaces.LinkedList
 
-class SinglyLinkedList<T> : LinkedList<T>{
+class SinglyLinkedList<T> : LinkedList<T> {
 
     private var size = 0
     private var head: Node<T>? = null
@@ -21,7 +21,7 @@ class SinglyLinkedList<T> : LinkedList<T>{
         size = 0
     }
 
-    override fun addFirst(data: T){
+    override fun addFirst(data: T) {
         val newNode = Node(data)
         if (isEmpty()) {
             head = newNode
@@ -33,7 +33,7 @@ class SinglyLinkedList<T> : LinkedList<T>{
         size++
     }
 
-    override fun addLast(data: T){
+    override fun addLast(data: T) {
         val newNode = Node(data)
         if (isEmpty()) {
             head = newNode
@@ -46,36 +46,34 @@ class SinglyLinkedList<T> : LinkedList<T>{
     }
 
     override fun removeFirst() {
-        if (isEmpty()) {
-            throw NoSuchElementException("Linked List is empty")
+        if (!isEmpty()) {
+            if (size == 1) {
+                head = null
+                tail = null
+            } else {
+                head = head?.next
+            }
+            size--
         }
-        if (size == 1) {
-            head = null
-            tail = null
-        } else {
-            head = head?.next
-        }
-        size--
     }
 
     override fun removeLast() {
-        if (isEmpty()) {
-            throw NoSuchElementException("Linked List is empty")
-        }
-        if (size == 1) {
-            head = null
-            tail = null
-        } else {
-            var current = head
-            var prev: Node<T>? = null
-            while (current?.next != null) {
-                prev = current
-                current = current.next
+        if (!isEmpty()) {
+            if (size == 1) {
+                head = null
+                tail = null
+            } else {
+                var current = head
+                var prev: Node<T>? = null
+                while (current?.next != null) {
+                    prev = current
+                    current = current.next
+                }
+                prev?.next = null
+                tail = prev
             }
-            prev?.next = null
-            tail = prev
+            size--
         }
-        size--
     }
 
     override fun toString(): String {
