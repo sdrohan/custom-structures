@@ -20,6 +20,7 @@ import interfaces.Stack
 fun StackScreen() {
 
     Column(Modifier.padding(16.dp)) {
+        Spacer(modifier = Modifier.height(64.dp))
         Text(
             "Stack",
             style = MaterialTheme.typography.headlineLarge,

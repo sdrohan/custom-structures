@@ -7,6 +7,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -19,6 +20,8 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import com.example.compose.AppTheme
 import datastructures.CustomQueue
+import datastructures.SinglyLinkedList
+import ui.LinkedListScreen
 import ui.MenuItem
 import ui.QueueScreen
 import ui.StackScreen
@@ -30,8 +33,9 @@ fun App() {
 
     var selectedMenuItem by remember { mutableStateOf<MenuItem?>(null) }
     val queue by remember { mutableStateOf(CustomQueue<String>()) }
+    val singlyLL by remember { mutableStateOf(SinglyLinkedList<String>()) }
 
-    Scaffold(
+        Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text(text = "Menu") },
@@ -57,6 +61,17 @@ fun App() {
                             Text("Queue", modifier = Modifier.padding(top = 2.dp))
                         }
                     }
+                    Spacer(modifier = Modifier.width(width = 16.dp))
+                    IconButton(onClick = { selectedMenuItem = MenuItem.SinglyLL }) {
+                        Row() {
+                            Icon(
+                                Icons.Default.KeyboardArrowDown,
+                                contentDescription = "Singly Linked List"
+                            )
+                            Spacer(modifier = Modifier.width(width = 4.dp))
+                            Text("Singly LL", modifier = Modifier.padding(top = 2.dp))
+                        }
+                    }
                 }
             )
         },
@@ -64,6 +79,7 @@ fun App() {
             when (selectedMenuItem) {
                 MenuItem.Stacks -> StackScreen()
                 MenuItem.Queue -> QueueScreen(queue)
+                MenuItem.SinglyLL -> LinkedListScreen(singlyLL)
                 else -> StackScreen()
             }
         }

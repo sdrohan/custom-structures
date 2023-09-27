@@ -20,6 +20,7 @@ fun QueueScreen(queue: CustomQueue<String>) {
 
     Column(Modifier.padding(16.dp))
     {
+        Spacer(modifier = Modifier.height(64.dp))
         Text(
             "Queue",
             style = MaterialTheme.typography.headlineLarge,
